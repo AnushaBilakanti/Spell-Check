@@ -19,34 +19,38 @@ def anagramWord(word_list):
 
 
 
-def spellCheck(word,dict_file):
-    # print "DICT IN FUNC"
+def spell_check(word,dict_file):
+    
     misspelt=0
-    if word in dict_file:
-        print "FOUND"
-    else:
-        word=word.strip()
-        word_list=[]
-        word_list=list(word)
-        # print "WORD CHAR",word_list
-        anagram_list=anagramWord(word_list)
-        for temp in anagram_list:
-            for x in dict_file:
-                x=x.strip()
-                x=list(x)
-                if x==temp and misspelt==0:
-                    misspelt=1
-                    x=''.join(x)
-                    print "WORD",word,"is misspelled"
-                    print "Replacement word", x
-                if x==temp and misspelt==1:
-                    x=''.join(x)
-                    print "Replacement word", x
+    
+    for i in dict_file:
+        if word==i:
+            word=word.strip()
+            word_list=[]
+            word_list=list(word)
+            anagram_list=anagramWord(word_list)
+            for temp in anagram_list:
+                for x in dict_file:
+                    x=x.strip()
+                    x=list(x)
+                    if x==temp and misspelt==0:
+                        misspelt=1
+                        x=''.join(x)
+                        print "WORD '",word,"' is misspelled"
+                        print "Replacement word", x
+                        replace_word=list(x)
+                    elif x==temp and misspelt==1 and x!=replace_word:
+                        x=''.join(x)
+                        print "Replacement word", x
+
 
 lst=[]
 dict_file=open("words.txt","r")
 for i in dict_file:
+    i=i.lower()
     lst.append(i)
 ip_file=open("input.txt","r")
-for i in ip_file:
-    spellCheck(i,lst)
+for line in ip_file.readlines():
+    for ip_word in line.split():
+        ip_word=ip_word.lower()
+        spellCheck(ip_word,lst)
