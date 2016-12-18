@@ -1,5 +1,5 @@
 '''
-Created on December 17, 2016
+Created on December 18, 2016
 @author: Anusha Bilakanti
 '''
 
@@ -45,7 +45,7 @@ def spell_check(word,dict_file):
 
 
 lst=[]
-dict_file=open("words.txt","r")
+dict_file=open("dictionary.txt","r")
 for i in dict_file:
     i=i.lower()
     lst.append(i)
