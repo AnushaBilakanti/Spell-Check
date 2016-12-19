@@ -1,0 +1,10 @@
+WORD ' thsi ' is misspelled
+Replacement word this
+Replacement word hits
+Replacement word hist
+Replacement word shit
+WORD ' godo ' is misspelled
+Replacement word good
+WORD ' pleca ' is misspelled
+Replacement word place
+
